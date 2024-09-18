@@ -24,11 +24,11 @@ A continuación se presentan algunas capturas de pantalla del proyecto en acció
 <center>
     <table>
         <tr>
-            <td><img src="screen/screen1.png" alt="Captura 1" width="300" /></td>
-            <td><img src="screen/screen2.png" alt="Captura 2" width="300" /></td>
+            <td><img src="screen/screen1.png" alt="Captura 1" width="full" /></td>
+            <td><img src="screen/screen2.png" alt="Captura 2" width="full" /></td>
         </tr>
         <tr>
-            <td colspan="2"><img src="screen/screen3.png" alt="Captura 3" width="600" /></td>
+            <td colspan="2"><img src="screen/screen3.png" alt="Captura 3" width="full" /></td>
         </tr>
     </table>
 </center>
