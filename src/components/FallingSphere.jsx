@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useBox } from "@react-three/cannon"; // Importamos useBox para física de cuerpos rígidos
+import { useSphere } from "@react-three/cannon"; // Importamos useSphere para física de cuerpos rígidos
 import { useFrame } from "@react-three/fiber";
 
-const FallingBox = ({ initialPosition, color }) => {
+const FallingSphere = ({ initialPosition, color }) => {
 	const [isClicked, setIsClicked] = useState(false);
 	const [clickStartTime, setClickStartTime] = useState(0);
 	const [clickDuration, setClickDuration] = useState(0);
 	const upperLimit = 3; // Límite superior (techo)
 	const sideLimit = 5; // Límite lateral
 
-	// useBox hook para crear un cuerpo rígido con física asociada al cubo
-	const [ref, api] = useBox(() => ({
-		mass: 1, // Definimos la masa del cubo
+	// useSphere hook para crear un cuerpo rígido con física asociada a la esfera
+	const [ref, api] = useSphere(() => ({
+		mass: 1, // Definimos la masa de la esfera
 		position: initialPosition, // Posición inicial
 		onCollide: (e) => {
 			// Detectar colisiones con otros objetos o el suelo
@@ -23,17 +23,17 @@ const FallingBox = ({ initialPosition, color }) => {
 
 	useFrame(() => {
 		if (isClicked) {
-			// Si el cubo está siendo clicado, calculamos la duración del clic
+			// Si la esfera está siendo clicada, calculamos la duración del clic
 			const duration = (Date.now() - clickStartTime) / 1000;
 			setClickDuration(duration);
 		}
 
-		// Limitar la posición del cubo en el eje Y (techo) y los ejes X y Z (laterales)
+		// Limitar la posición de la esfera en el eje Y (techo) y los ejes X y Z (laterales)
 		api.position.subscribe(([x, y, z]) => {
 			// Límite superior
 			if (y > upperLimit) {
 				api.position.set(x, upperLimit, z);
-				api.velocity.set(0, 0, 0); // Detener el cubo si alcanza el límite superior
+				api.velocity.set(0, 0, 0); // Detener la esfera si alcanza el límite superior
 			}
 			// Límite lateral en X
 			if (x > sideLimit) {
@@ -79,10 +79,10 @@ const FallingBox = ({ initialPosition, color }) => {
 			onPointerDown={handlePointerDown}
 			onPointerUp={handlePointerUp}
 		>
-			<boxGeometry args={[1, 1, 1]} /> {/* Geometría del cubo */}
-			<meshStandardMaterial color={color} /> {/* Material del cubo */}
+			<sphereGeometry args={[1, 32, 32]} /> {/* Geometría de la esfera */}
+			<meshStandardMaterial color={color} /> {/* Material de la esfera */}
 		</mesh>
 	);
 };
 
-export default FallingBox;
+export default FallingSphere;
