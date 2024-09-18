@@ -7,7 +7,7 @@ const FallingSphere = ({ initialPosition, color }) => {
 	const [clickStartTime, setClickStartTime] = useState(0);
 	const [clickDuration, setClickDuration] = useState(0);
 	const upperLimit = 3; // Límite superior (techo)
-	const sideLimit = 5; // Límite lateral
+	const sideLimit = 4; // Límite lateral
 
 	// useSphere hook para crear un cuerpo rígido con física asociada a la esfera
 	const [ref, api] = useSphere(() => ({

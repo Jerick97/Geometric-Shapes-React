@@ -27,13 +27,22 @@ const Scene = () => {
 		return [Math.random() * 6 - 3, 5, Math.random() * 6 - 3];
 	};
 
+	const colorPalette = [
+		"#f72585",
+		"#b5179e",
+		"#7209b7",
+		"#560bad",
+		"#480ca8",
+		"#3a0ca3",
+		"#3f37c9",
+		"#4361ee",
+		"#4895ef",
+		"#4cc9f0",
+	];
+
 	const generateRandomColor = () => {
-		const letters = "0123456789ABCDEF";
-		let color = "#";
-		for (let i = 0; i < 6; i++) {
-			color += letters[Math.floor(Math.random() * 16)];
-		}
-		return color;
+		const randomIndex = Math.floor(Math.random() * colorPalette.length);
+		return colorPalette[randomIndex];
 	};
 
 	useEffect(() => {
