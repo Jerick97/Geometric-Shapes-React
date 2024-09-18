@@ -98,7 +98,7 @@ const Scene = () => {
 	return (
 		<div style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
 			<Canvas>
-				<ambientLight intensity={1} />
+				<ambientLight intensity={3} />
 				<pointLight position={[10, 10, 10]} />
 				<Physics>
 					<BlackPlane />
